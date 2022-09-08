@@ -16,7 +16,7 @@ def index(request):
             'properties': {
                 'title': place.title,
                 'placeId': place.id,
-                'detailsUrl': '/'
+                'detailsUrl': f'/places/{ place.id }/'
             }
         })
     places_json = {
