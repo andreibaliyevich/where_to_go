@@ -1,4 +1,5 @@
 from django.db import models
+from .utilities import get_image_path
 
 
 class Place(models.Model):
@@ -18,3 +19,22 @@ class Place(models.Model):
         verbose_name = 'Место'
         verbose_name_plural = 'Места'
         ordering = ['-id']
+
+
+class Image(models.Model):
+    """ Image Model """
+    place = models.ForeignKey(
+        Place,
+        on_delete=models.CASCADE,
+        verbose_name='Место',
+    )
+    image = models.ImageField(
+        upload_to=get_image_path,
+        verbose_name='Изображение',
+    )
+    order = models.IntegerField(default=0, verbose_name='Очередь')
+
+    class Meta:
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
+        ordering = ['place', 'order']
