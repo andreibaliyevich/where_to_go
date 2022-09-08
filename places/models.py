@@ -32,9 +32,9 @@ class Image(models.Model):
         upload_to=get_image_path,
         verbose_name='Изображение',
     )
-    order = models.IntegerField(default=0, verbose_name='Очередь')
+    position = models.IntegerField(default=0, verbose_name='Позиция')
 
     class Meta:
         verbose_name = 'Изображение'
         verbose_name_plural = 'Изображения'
-        ordering = ['place', 'order']
+        ordering = ['place', 'position']
