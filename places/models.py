@@ -1,3 +1,4 @@
+from tinymce.models import HTMLField
 from django.db import models
 from .utilities import get_image_path
 
@@ -10,7 +11,7 @@ class Place(models.Model):
         max_length=256,
         verbose_name='Короткое описание',
     )
-    description_long = models.TextField(verbose_name='Описание (полное)')
+    description_long = HTMLField(verbose_name='Описание (полное)')
 
     coordinates_lng = models.FloatField(verbose_name='Координаты (долгота)')
     coordinates_lat = models.FloatField(verbose_name='Координаты (широта)')
