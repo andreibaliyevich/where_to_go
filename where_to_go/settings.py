@@ -137,7 +137,11 @@ if DEBUG:
 else:
     STATIC_ROOT = BASE_DIR / 'static/'
 
-MEDIA_URL = '/media/'
+if DEBUG:
+    MEDIA_URL = '/media/'
+else:
+    MEDIA_URL = 'https://www.pythonanywhere.com/user/andreibaliyevich/files/home/andreibaliyevich/andreibaliyevich.pythonanywhere.com/media/'
+
 MEDIA_ROOT = BASE_DIR / 'media/'
 
 # Default primary key field type
