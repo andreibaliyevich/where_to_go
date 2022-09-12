@@ -46,6 +46,27 @@
 
     python manage.py createsuperuser
 
-##### 9. Запустить приложение
+##### 9. Загрузить данные
 
-    python manage.py runserver 
+    python manage.py load_place --url http://адрес/файла.json
+
+Пример файла json:
+
+    {
+        "title": "Антикафе Bizone",
+        "imgs": [
+            "https://raw.githubusercontent.com/devmanorg/where-to-go-places/master/media/1f09226ae0edf23d20708b4fcc498ffd.jpg",
+            "https://raw.githubusercontent.com/devmanorg/where-to-go-places/master/media/6e1c15fd7723e04e73985486c441e061.jpg",
+            "https://raw.githubusercontent.com/devmanorg/where-to-go-places/master/media/be067a44fb19342c562e9ffd815c4215.jpg"
+        ],
+        "description_short": "Настольные и компьютерные игры...",
+        "description_long": "<p>Рядом со станцией метро «Войковская» открылось антикафе Bizone, в котором создание качественного отдыха стало делом жизни для всей команды. Создатели разделили пространство на две зоны, одна из которых доступна для всех посетителей...",
+        "coordinates": {
+            "lng": "37.50169",
+            "lat": "55.816591"
+        }
+    }
+
+##### 10. Запустить приложение
+
+    python manage.py runserver
