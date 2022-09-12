@@ -19,7 +19,7 @@ class Command(BaseCommand):
         r = requests.get(options['url'])
         data = r.json()
 
-        place = Place.objects.get_or_create(
+        place, is_create = Place.objects.get_or_create(
             title=data['title'],
             description_short=data['description_short'],
             description_long=data['description_long'],
@@ -27,12 +27,13 @@ class Command(BaseCommand):
             coordinates_lat=data['coordinates']['lat'],
         )
 
-        k = 1
-        for img_url in data['imgs']:
-            name = img_url.split('/')[-1]
-            img_r = requests.get(img_url)
-            content = ContentFile(img_r.content)
-            img = Image(place=place[0], position=k)
-            img.image.save(name, content, save=False)
-            img.save()
-            k += 1
+        if is_create:
+            k = 1
+            for img_url in data['imgs']:
+                name = img_url.split('/')[-1]
+                img_r = requests.get(img_url)
+                content = ContentFile(img_r.content)
+                img = Image(place=place, position=k)
+                img.image.save(name, content, save=False)
+                img.save()
+                k += 1
