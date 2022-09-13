@@ -47,5 +47,4 @@ def place_detail(request, pk):
             'lat': place.coordinates_lat
         }
     }
-    return JsonResponse(data,
-        safe=False, json_dumps_params={'ensure_ascii': False})
+    return JsonResponse(data, json_dumps_params={'ensure_ascii': False})
