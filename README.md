@@ -42,11 +42,15 @@
 
     pip install -r requirements.txt
 
-##### 8. Создать суперпользователя
+##### 8. Применить миграции
+
+    python manage.py migrate
+
+##### 9. Создать суперпользователя
 
     python manage.py createsuperuser
 
-##### 9. Загрузить данные
+##### 10. Загрузить данные
 
     python manage.py load_place --url http://адрес/файла.json
 
@@ -67,6 +71,6 @@
         }
     }
 
-##### 10. Запустить приложение
+##### 11. Запустить приложение
 
     python manage.py runserver
