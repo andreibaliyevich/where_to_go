@@ -6,10 +6,7 @@ from .utilities import get_image_path
 class Place(models.Model):
     title = models.CharField(max_length=128, verbose_name='Название')
 
-    description_short = models.CharField(
-        max_length=256,
-        verbose_name='Короткое описание',
-    )
+    description_short = models.TextField(verbose_name='Короткое описание')
     description_long = HTMLField(verbose_name='Описание (полное)')
 
     longitude = models.FloatField(verbose_name='Долгота')
