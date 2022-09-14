@@ -29,10 +29,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', True)
 
-if DEBUG:
-    ALLOWED_HOSTS = ['127.0.0.1']
-else:
-    ALLOWED_HOSTS = ['andreibaliyevich.pythonanywhere.com']
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', ['127.0.0.1'])
 
 
 # Application definition
@@ -73,6 +70,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.static',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -129,19 +128,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static/'
 
-if DEBUG:
-    STATICFILES_DIRS = [
-        BASE_DIR / 'static/',
-    ]
-else:
-    STATIC_ROOT = BASE_DIR / 'static/'
-
-if DEBUG:
-    MEDIA_URL = '/media/'
-else:
-    MEDIA_URL = 'https://www.pythonanywhere.com/user/andreibaliyevich/files/home/andreibaliyevich/andreibaliyevich.pythonanywhere.com/media/'
-
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
 # Default primary key field type
