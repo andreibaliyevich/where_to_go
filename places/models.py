@@ -4,7 +4,6 @@ from .utilities import get_image_path
 
 
 class Place(models.Model):
-    """ Place Model """
     title = models.CharField(max_length=128, verbose_name='Название')
 
     description_short = models.CharField(
@@ -13,8 +12,8 @@ class Place(models.Model):
     )
     description_long = HTMLField(verbose_name='Описание (полное)')
 
-    coordinates_lng = models.FloatField(verbose_name='Координаты (долгота)')
-    coordinates_lat = models.FloatField(verbose_name='Координаты (широта)')
+    longitude = models.FloatField(verbose_name='Долгота')
+    latitude = models.FloatField(verbose_name='Широта')
 
     class Meta:
         verbose_name = 'Место'
@@ -23,10 +22,10 @@ class Place(models.Model):
 
 
 class Image(models.Model):
-    """ Image Model """
     place = models.ForeignKey(
         Place,
         on_delete=models.CASCADE,
+        related_name='images',
         verbose_name='Место',
     )
     image = models.ImageField(

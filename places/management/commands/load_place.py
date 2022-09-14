@@ -23,8 +23,8 @@ class Command(BaseCommand):
             title=data['title'],
             description_short=data['description_short'],
             description_long=data['description_long'],
-            coordinates_lng=data['coordinates']['lng'],
-            coordinates_lat=data['coordinates']['lat'],
+            longitude=data['coordinates']['lng'],
+            latitude=data['coordinates']['lat'],
         )
 
         if is_create:

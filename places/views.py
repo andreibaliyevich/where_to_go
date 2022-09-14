@@ -4,14 +4,13 @@ from .models import Place
 
 
 def index(request):
-    """ Home page """
     features = []
     for place in Place.objects.all():
         features.append({
             'type': 'Feature',
             'geometry': {
                 'type': 'Point',
-                'coordinates': [place.coordinates_lng, place.coordinates_lat]
+                'coordinates': [place.longitude, place.latitude]
             },
             'properties': {
                 'title': place.title,
@@ -30,11 +29,10 @@ def index(request):
 
 
 def place_detail(request, pk):
-    """ Place detail """
     place = get_object_or_404(Place, pk=pk)
 
     imgs = []
-    for img in place.image_set.all():
+    for img in place.images.all():
         imgs.append(img.image.url)
 
     data = {
@@ -43,8 +41,8 @@ def place_detail(request, pk):
         'description_short': place.description_short,
         'description_long': place.description_long,
         'coordinates': {
-            'lng': place.coordinates_lng,
-            'lat': place.coordinates_lat
+            'lng': place.longitude,
+            'lat': place.latitude
         }
     }
     return JsonResponse(data, json_dumps_params={'ensure_ascii': False})
