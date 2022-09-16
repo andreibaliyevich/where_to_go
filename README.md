@@ -29,6 +29,7 @@
 
     SECRET_KEY='Vash-secretniy-kluch'
     DEBUG=true
+    ALLOWED_HOSTS=127.0.0.1
 
 ##### 4. Создать виртуальное окружение
 
