@@ -15,11 +15,11 @@ class ImageInline(SortableTabularInline):
         else:
             img_height = 200
 
-        return mark_safe('<img src="{url}" height={height} />'.format(
+        return mark_safe('<img src="{url}" height="{height}" />'.format(
             url=obj.image.url,
             height=img_height,
-        )
-    )
+        ))
+    get_preview.short_description = 'Предварительный просмотр'
 
 
 class PlaceAdmin(SortableAdminMixin, admin.ModelAdmin):
