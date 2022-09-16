@@ -1,4 +1,4 @@
-from adminsortable2.admin import SortableAdminMixin, SortableTabularInline
+from adminsortable2.admin import SortableAdminBase, SortableTabularInline
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from .models import Place, Image
@@ -22,10 +22,7 @@ class ImageInline(SortableTabularInline):
     get_preview.short_description = 'Предварительный просмотр'
 
 
-class PlaceAdmin(SortableAdminMixin, admin.ModelAdmin):
-    """ PlaceModel for admin """
-    list_display = ('id', 'title', 'description_short')
+@admin.register(Place)
+class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
+    list_display = ('title', 'description_short')
     inlines = (ImageInline,)
-
-
-admin.site.register(Place, PlaceAdmin)
