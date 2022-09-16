@@ -32,8 +32,6 @@ class Command(BaseCommand):
             for img_url in data['imgs']:
                 name = img_url.split('/')[-1]
                 img_r = requests.get(img_url)
-                content = ContentFile(img_r.content)
-                img = Image(place=place, position=k)
-                img.image.save(name, content, save=False)
-                img.save()
+                file = ContentFile(img_r.content, name)
+                Image.objects.create(place=place, image=file, position=k)
                 k += 1
